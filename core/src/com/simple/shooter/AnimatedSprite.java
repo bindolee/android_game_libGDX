@@ -114,4 +114,9 @@ public class AnimatedSprite {
             velocity.x = 0;
         }
     }
+
+    public void setVelocity(Vector2 velocity)
+    {
+        this.velocity = velocity;
+    }
 }

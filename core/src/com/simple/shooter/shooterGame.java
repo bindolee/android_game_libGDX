@@ -17,6 +17,7 @@ public class shooterGame implements ApplicationListener {
 	private SpriteBatch batch;
 	private Texture background;
 	private AnimatedSprite spaceshipAnimated;
+	private ShotManager shotManager;
 
 	@Override
 	public void create() {
@@ -36,6 +37,10 @@ public class shooterGame implements ApplicationListener {
 		Sprite spaceShipSprite = new Sprite(spaceShipTexture); //construct the sprite using this texture.
 		spaceshipAnimated = new AnimatedSprite(spaceShipSprite);
 		spaceshipAnimated.setPosition(800/2, 0);
+
+		//Create shotmanager w/ passing shot texture.
+		Texture shotTexture = new Texture(Gdx.files.internal("data/shot-spritesheet.png"));
+		shotManager = new ShotManager(shotTexture);
 
 	}
 
@@ -75,6 +80,8 @@ public class shooterGame implements ApplicationListener {
 			else{
 				spaceshipAnimated.moveLeft();
 			}
+
+			shotManager.firePlayerShot(spaceshipAnimated.getX());
 
 		}
 	}
