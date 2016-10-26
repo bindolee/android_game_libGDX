@@ -130,4 +130,8 @@ public class AnimatedSprite {
     public int getWidth() {
         return (int) getSpriteWidth();
     }
+
+    public int getHeight() {
+        return sprite.getHeight()/ FRAMES_ROW;
+    }
 }

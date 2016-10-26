@@ -2,6 +2,7 @@ package com.simple.shooter;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Random;
 
@@ -24,7 +25,7 @@ public class Enemy {
         Sprite enemySprite = new Sprite(enemyTexture);
         animatedSprite = new AnimatedSprite(enemySprite);
         int xPosition = createRandomPosition();
-
+        animatedSprite.setPosition(xPosition, shooterGame.SCREEN_HEIGHT-animatedSprite.getHeight());
 
     }
 
@@ -34,5 +35,10 @@ public class Enemy {
         int randomNumber = random.nextInt(shooterGame.SCREEN_WIDTH - animatedSprite.getWidth() + 1);
 
         return randomNumber + animatedSprite.getWidth()/2;
+    }
+
+    public void draw(SpriteBatch batch)
+    {
+        animatedSprite.draw(batch);
     }
 }

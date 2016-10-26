@@ -70,6 +70,7 @@ public class shooterGame implements ApplicationListener {
 		batch.begin();
 		batch.draw(background,0,0);
 		spaceshipAnimated.draw(batch); //Sprite know how to draw by themselves
+		enemy.draw(batch);
 		shotManager.draw(batch);
 		batch.end();
 
