@@ -3,44 +3,30 @@ package com.simple.shooter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import javax.microedition.khronos.opengles.GL10;
+
 
 public class shooterGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private Texture texture;
-	private Sprite sprite;
 
 	@Override
 	public void create() {
 
-		//Texture.setEnforcePotImages(false);
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
+		//Texture.setEnforcePotImages(false); <- this has been removed from libGDX
 
-		camera = new OrthographicCamera(1, h/w);
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, 800, 480); // pixel for 800 x 480
+
 		batch = new SpriteBatch();
 
-		texture = new Texture(Gdx.files.internal("libgdx.png"));
-		texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-
-		TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
-
-		sprite = new Sprite(region);
-		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
-		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
 	}
 
 	@Override
 	public void dispose() {
 		batch.dispose();
-		texture.dispose();
 	}
 
 	@Override
@@ -50,7 +36,6 @@ public class shooterGame implements ApplicationListener {
 
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		sprite.draw(batch);
 		batch.end();
 	}
 
