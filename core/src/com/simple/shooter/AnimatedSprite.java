@@ -102,5 +102,16 @@ public class AnimatedSprite {
     {
         int xMovement = (int) (velocity.x * Gdx.graphics.getDeltaTime());
         sprite.setPosition(sprite.getX()+xMovement, 0);
+
+        //Add boundary check here (left/right wall)
+        if (sprite.getX() < 0){
+            //left hand side wall boundary check
+            sprite.setX(0);
+            velocity.x = 0;
+        }
+        if (sprite.getX() + getSpriteWidth() > 800){
+            sprite.setX(800-getSpriteWidth());
+            velocity.x = 0;
+        }
     }
 }
