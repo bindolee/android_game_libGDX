@@ -53,6 +53,13 @@ public class shooterGame implements ApplicationListener {
 		spaceshipAnimated.draw(batch); //Sprite know how to draw by themselves
 		batch.end();
 
+		handleInput();
+
+		spaceshipAnimated.move();
+
+	}
+
+	private void handleInput() {
 		//handle touch input here..
 		// get the x, y coord when touch input event is happened
 		if (Gdx.input.isTouched()){

@@ -76,7 +76,8 @@ public class AnimatedSprite {
         return getSpriteWidth()/2;
     }
 
-    private float getSpriteWidth() {
+    private float getSpriteWidth()
+    {
         return sprite.getWidth() / FRAMES_COL;
     }
 
@@ -90,7 +91,16 @@ public class AnimatedSprite {
         velocity = new Vector2(-SHIP_SPEED, 0); // move 300 pixel/sec in x(left) and 0 in y direction.
     }
 
-    public int getX() {
+    public int getX()
+    {
         return (int) (sprite.getX() + getSpriteCenterOffset());
+    }
+
+    // Calculate how much move needs to be done based on the velocity * how much time elapsed.
+    // Then add the offset into the last position sprite X position
+    public void move()
+    {
+        int xMovement = (int) (velocity.x * Gdx.graphics.getDeltaTime());
+        sprite.setPosition(sprite.getX()+xMovement, 0);
     }
 }
