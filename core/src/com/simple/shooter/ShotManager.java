@@ -36,4 +36,10 @@ public class ShotManager {
     private boolean canFireShot() {
         return true;
     }
+
+    public void update() {
+        for (AnimatedSprite shot : shots){
+            shot.move();
+        }
+    }
 }

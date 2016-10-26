@@ -101,7 +101,10 @@ public class AnimatedSprite {
     public void move()
     {
         int xMovement = (int) (velocity.x * Gdx.graphics.getDeltaTime());
-        sprite.setPosition(sprite.getX()+xMovement, 0);
+        //Ymovement is for shot.. reuse this code... later..you can create own
+        //move for shotmager..only..here trying to make anything simple.
+        int yMovement = (int) (velocity.y * Gdx.graphics.getDeltaTime());
+        sprite.setPosition(sprite.getX()+xMovement, yMovement);
 
         //Add boundary check here (left/right wall)
         if (sprite.getX() < 0){

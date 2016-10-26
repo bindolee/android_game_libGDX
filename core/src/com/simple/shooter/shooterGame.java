@@ -63,6 +63,7 @@ public class shooterGame implements ApplicationListener {
 		handleInput();
 
 		spaceshipAnimated.move();
+		shotManager.update();
 
 	}
 
