@@ -2,6 +2,7 @@ package com.simple.shooter;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
@@ -40,6 +41,12 @@ public class ShotManager {
     public void update() {
         for (AnimatedSprite shot : shots){
             shot.move();
+        }
+    }
+
+    public void draw(SpriteBatch batch) {
+        for (AnimatedSprite shot : shots){
+            shot.draw(batch);
         }
     }
 }
