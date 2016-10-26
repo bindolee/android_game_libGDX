@@ -14,7 +14,6 @@ public class shooterGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture background;
-	private Sprite spaceShipSprite; //need to declare sprite for spaceship
 	private AnimatedSprite spaceshipAnimated;
 
 	@Override
@@ -32,10 +31,9 @@ public class shooterGame implements ApplicationListener {
 
 		//Need texture for spaceship.
 		Texture spaceShipTexture = new Texture(Gdx.files.internal("data/spaceship-spritesheet.png"));
-		spaceShipSprite = new Sprite(spaceShipTexture); //construct the sprite using this texture.
-		spaceShipSprite.setPosition(800/2 - (spaceShipSprite.getWidth()/2), 0); //place it in the middle of bottom. x is 800 pixel, fyi.
-
+		Sprite spaceShipSprite = new Sprite(spaceShipTexture); //construct the sprite using this texture.
 		spaceshipAnimated = new AnimatedSprite(spaceShipSprite);
+		spaceshipAnimated.setPosition(800/2, 0);
 
 	}
 

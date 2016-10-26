@@ -59,6 +59,8 @@ public class AnimatedSprite {
         spriteBatch.draw(currentFrame, sprite.getX(), sprite.getY());
     }
 
+    //Since animated frame image has x number of column.. intead of 1 still image.
+    //So you need to divide by number of col...rather than 2.
     public void setPosition(float x, float y)
     {
         float widthOffset = sprite.getWidth() / FRAMES_COL;
