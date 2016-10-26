@@ -48,7 +48,7 @@ public class ShotManager {
             shot.move();
         }
 
-        // Increment by delta time 
+        // Increment by delta time
         timeSinceLastShot += Gdx.graphics.getDeltaTime();
     }
 

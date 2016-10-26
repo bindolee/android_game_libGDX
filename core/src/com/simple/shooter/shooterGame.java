@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -72,11 +73,15 @@ public class shooterGame implements ApplicationListener {
 		//handle touch input here..
 		// get the x, y coord when touch input event is happened
 		if (Gdx.input.isTouched()){
-			int xTouch = Gdx.input.getX();
+			//3 dimen vector to translate/calculate touch position
+			// to get the correct cooredinates for based on camera position.
+			Vector3 touchPosition =
+					new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+			camera.unproject(touchPosition);
 			//int yTouch = Gdx.input.getY(); //our ship moves only x axis..so..no need here
 			//Log.i(getClass().getSimpleName(), "x: "+ xTouch + "y: "+ yTouch);
 
-			if (xTouch > spaceshipAnimated.getX()){
+			if (touchPosition.x > spaceshipAnimated.getX()){
 				spaceshipAnimated.moveRight();
 			}
 			else{
