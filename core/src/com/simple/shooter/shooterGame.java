@@ -32,6 +32,8 @@ public class shooterGame implements ApplicationListener {
 		//Need texture for spaceship.
 		Texture spaceShipTexture = new Texture(Gdx.files.internal("data/spaceship.png"));
 		spaceShipSprite = new Sprite(spaceShipTexture); //construct the sprite using this texture.
+		spaceShipSprite.setPosition(800/2 - (spaceShipSprite.getWidth()/2), 0); //place it in the middle of bottom. x is 800 pixel, fyi.
+
 	}
 
 	@Override
