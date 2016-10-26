@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -13,6 +14,7 @@ public class shooterGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture background;
+	private Sprite spaceShipSprite; //need to declare sprite for spaceship
 
 	@Override
 	public void create() {
@@ -26,6 +28,10 @@ public class shooterGame implements ApplicationListener {
 
 		//Open the background.png
 		background = new Texture(Gdx.files.internal("data/background.png"));
+
+		//Need texture for spaceship.
+		Texture spaceShipTexture = new Texture(Gdx.files.internal("data/spaceship.png"));
+		spaceShipSprite = new Sprite(spaceShipTexture); //construct the sprite using this texture.
 	}
 
 	@Override
@@ -41,6 +47,7 @@ public class shooterGame implements ApplicationListener {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		batch.draw(background,0,0);
+		spaceShipSprite.draw(batch); //Sprite know how to draw by themselves
 		batch.end();
 	}
 
