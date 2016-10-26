@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -44,8 +45,14 @@ public class ShotManager {
     }
 
     public void update() {
-        for (AnimatedSprite shot : shots){
+        Iterator<AnimatedSprite> i = shots.iterator();
+
+        while(i.hasNext()) {
+            AnimatedSprite shot = i.next();
             shot.move();
+            if (shot.getY() > shooterGame.SCREEN_HEIGHT){
+                i.remove();
+            }
         }
 
         // Increment by delta time

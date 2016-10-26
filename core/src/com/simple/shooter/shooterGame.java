@@ -78,8 +78,6 @@ public class shooterGame implements ApplicationListener {
 			Vector3 touchPosition =
 					new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
 			camera.unproject(touchPosition);
-			//int yTouch = Gdx.input.getY(); //our ship moves only x axis..so..no need here
-			//Log.i(getClass().getSimpleName(), "x: "+ xTouch + "y: "+ yTouch);
 
 			if (touchPosition.x > spaceshipAnimated.getX()){
 				spaceshipAnimated.moveRight();
