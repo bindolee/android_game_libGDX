@@ -3,6 +3,7 @@ package com.simple.shooter;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -11,6 +12,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class shooterGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
+	private Texture background;
 
 	@Override
 	public void create() {
@@ -22,6 +24,8 @@ public class shooterGame implements ApplicationListener {
 
 		batch = new SpriteBatch();
 
+		//Open the background.png
+		background = new Texture(Gdx.files.internal("data/background.png"));
 	}
 
 	@Override
@@ -36,6 +40,7 @@ public class shooterGame implements ApplicationListener {
 
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
+		batch.draw(background,0,0);
 		batch.end();
 	}
 
