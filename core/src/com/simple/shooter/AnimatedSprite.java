@@ -109,8 +109,8 @@ public class AnimatedSprite {
             sprite.setX(0);
             velocity.x = 0;
         }
-        if (sprite.getX() + getSpriteWidth() > 800){
-            sprite.setX(800-getSpriteWidth());
+        if (sprite.getX() + getSpriteWidth() > shooterGame.SCREEN_WIDTH){
+            sprite.setX(shooterGame.SCREEN_WIDTH-getSpriteWidth());
             velocity.x = 0;
         }
     }

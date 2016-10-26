@@ -11,6 +11,8 @@ import javax.microedition.khronos.opengles.GL10;
 
 
 public class shooterGame implements ApplicationListener {
+	public static final int SCREEN_WIDTH = 800;
+	public static final int SCREEN_HEIGHT = 480;
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture background;
@@ -22,7 +24,7 @@ public class shooterGame implements ApplicationListener {
 		//Texture.setEnforcePotImages(false); <- this has been removed from libGDX
 
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 480); // pixel for 800 x 480
+		camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT); // pixel for 800 x 480
 
 		batch = new SpriteBatch();
 
