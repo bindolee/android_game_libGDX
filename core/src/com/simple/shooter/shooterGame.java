@@ -1,5 +1,6 @@
 package com.simple.shooter;
 
+import android.util.Log;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -52,6 +53,14 @@ public class shooterGame implements ApplicationListener {
 		batch.draw(background,0,0);
 		spaceshipAnimated.draw(batch); //Sprite know how to draw by themselves
 		batch.end();
+
+		//handle touch input here..
+		// get the x, y coord when touch input event is happened
+		if (Gdx.input.isTouched()){
+			int xTouch = Gdx.input.getX();
+			int yTouch = Gdx.input.getY();
+			Log.i(getClass().getSimpleName(), "x: "+ xTouch + "y: "+ yTouch);
+		}
 	}
 
 	@Override
