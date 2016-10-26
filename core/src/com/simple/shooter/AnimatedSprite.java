@@ -132,6 +132,6 @@ public class AnimatedSprite {
     }
 
     public int getHeight() {
-        return sprite.getHeight()/ FRAMES_ROW;
+        return (int) (sprite.getHeight()/ FRAMES_ROW);
     }
 }
