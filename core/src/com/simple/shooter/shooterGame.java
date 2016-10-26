@@ -2,6 +2,7 @@ package com.simple.shooter;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -19,6 +20,7 @@ public class shooterGame implements ApplicationListener {
 	private Texture background;
 	private AnimatedSprite spaceshipAnimated;
 	private ShotManager shotManager;
+	private Music gameMusic;
 
 	@Override
 	public void create() {
@@ -43,6 +45,11 @@ public class shooterGame implements ApplicationListener {
 		Texture shotTexture = new Texture(Gdx.files.internal("data/shot-spritesheet.png"));
 		shotManager = new ShotManager(shotTexture);
 
+		//GameMusic play after set volume and loop
+		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("data/game-music.mp3"));
+		gameMusic.setVolume(.25f);
+		gameMusic.setLooping(true);
+		gameMusic.play();
 	}
 
 	@Override
