@@ -1,6 +1,5 @@
 package com.simple.shooter;
 
-import android.util.Log;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -58,8 +57,16 @@ public class shooterGame implements ApplicationListener {
 		// get the x, y coord when touch input event is happened
 		if (Gdx.input.isTouched()){
 			int xTouch = Gdx.input.getX();
-			int yTouch = Gdx.input.getY();
-			Log.i(getClass().getSimpleName(), "x: "+ xTouch + "y: "+ yTouch);
+			//int yTouch = Gdx.input.getY(); //our ship moves only x axis..so..no need here
+			//Log.i(getClass().getSimpleName(), "x: "+ xTouch + "y: "+ yTouch);
+
+			if (xTouch > spaceshipAnimated.getX()){
+				spaceshipAnimated.moveRight();
+			}
+			else{
+				spaceshipAnimated.moveLeft();
+			}
+
 		}
 	}
 
