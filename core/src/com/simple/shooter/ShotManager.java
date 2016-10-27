@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -108,10 +109,11 @@ public class ShotManager {
 
     private boolean shotTouches(List<AnimatedSprite> shots,
                                 Rectangle boundingBox) {
+        Rectangle intersection = new Rectangle();
         Iterator<AnimatedSprite> i = shots.iterator();
         while(i.hasNext()){
             AnimatedSprite shot = i.next();
-            //if(Intersector.intersectRectangles( shot.getBoundingBox(), boundingBox,0))
+            if(Intersector.intersectRectangles( shot.getBoundingBox(), boundingBox,intersection))
             {
                 i.remove();
                 return true;
