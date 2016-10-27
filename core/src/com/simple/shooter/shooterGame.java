@@ -44,7 +44,8 @@ public class shooterGame implements ApplicationListener {
 
 		//Create shotmanager w/ passing shot texture.
 		Texture shotTexture = new Texture(Gdx.files.internal("data/shot-spritesheet.png"));
-		shotManager = new ShotManager(shotTexture);
+		Texture enemyshoTexture = new Texture(Gdx.files.internal("data/enemy-shot-spritesheet.png"));
+		shotManager = new ShotManager(shotTexture, enemyshoTexture);
 
 		Texture enemyTexture = new Texture(Gdx.files.internal("data/enemy-spritesheet.png"));
 		enemy = new Enemy(enemyTexture, shotManager);

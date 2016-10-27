@@ -22,14 +22,16 @@ public class ShotManager {
     private static final float ENEMY_SHOT_Y_OFFSET = 400;
 
     private final Texture shotTexture;
+    private Texture enemyShoTexture;
     private List<AnimatedSprite> shots = new ArrayList<AnimatedSprite>();
     private float timeSinceLastShot = 0;
     private Sound laser = Gdx.audio.newSound(Gdx.files.internal("data/laser-bolt.mp3"));
     private List<AnimatedSprite> enemyShots = new ArrayList<AnimatedSprite>();
 
-    public ShotManager(Texture shotTexture)
+    public ShotManager(Texture shotTexture, Texture enemyshoTexture)
     {
         this.shotTexture = shotTexture;
+        this.enemyShoTexture = enemyshoTexture;
     }
 
     public void firePlayerShot(int shipCenterXLocation)
@@ -87,7 +89,7 @@ public class ShotManager {
 
     public void fireEnemyShot(int enemyCenterXLocation)
     {
-        Sprite newShot = new Sprite(shotTexture);
+        Sprite newShot = new Sprite(enemyShoTexture);
         AnimatedSprite newShotAnimated = new AnimatedSprite(newShot);
         newShotAnimated.setPosition(enemyCenterXLocation, ENEMY_SHOT_Y_OFFSET);
         newShotAnimated.setVelocity(new Vector2(0, -SHOT_SPEED));
