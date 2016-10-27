@@ -51,7 +51,7 @@ public class Enemy {
             animatedSprite.changeDirection();
         }
         if (shouldFire()){
-            animatedSprite.fireEnemyShot(animatedSprite.getX());
+            shotManager.fireEnemyShot(animatedSprite.getX());
         }
         animatedSprite.move();
     }
