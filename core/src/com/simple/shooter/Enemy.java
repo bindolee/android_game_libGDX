@@ -46,6 +46,15 @@ public class Enemy {
 
     public void update()
     {
-        animatedSprite.move();
+        if(shouldChangeDirection()) {
+            animatedSprite.changeDirection();
+            animatedSprite.move();
+        }
+    }
+
+    private boolean shouldChangeDirection()
+    {
+        Random random = new Random();
+        return random.nextInt(21) == 0;// 1 in 20 chance. 5% chance
     }
 }

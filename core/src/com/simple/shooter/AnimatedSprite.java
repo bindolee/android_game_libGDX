@@ -110,11 +110,9 @@ public class AnimatedSprite {
         if (sprite.getX() < 0){
             //left hand side wall boundary check
             sprite.setX(0);
-            velocity.x = 0;
         }
         if (sprite.getX() + getSpriteWidth() > shooterGame.SCREEN_WIDTH){
             sprite.setX(shooterGame.SCREEN_WIDTH-getSpriteWidth());
-            velocity.x = 0;
         }
     }
 
@@ -133,5 +131,10 @@ public class AnimatedSprite {
 
     public int getHeight() {
         return (int) (sprite.getHeight()/ FRAMES_ROW);
+    }
+
+    public void changeDirection()
+    {
+        velocity.x = -velocity.x;
     }
 }
