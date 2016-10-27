@@ -22,6 +22,7 @@ public class shooterGame implements ApplicationListener {
 	private ShotManager shotManager;
 	private Music gameMusic;
 	private Enemy enemy;
+	private CollisionManager collisionManager;
 
 	@Override
 	public void create() {
@@ -49,6 +50,8 @@ public class shooterGame implements ApplicationListener {
 
 		Texture enemyTexture = new Texture(Gdx.files.internal("data/enemy-spritesheet.png"));
 		enemy = new Enemy(enemyTexture, shotManager);
+
+		collisionManager = new CollisionManager(spaceshipAnimated, enemy, shotManager);
 
 		//GameMusic play after set volume and loop
 		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("data/game-music.mp3"));
