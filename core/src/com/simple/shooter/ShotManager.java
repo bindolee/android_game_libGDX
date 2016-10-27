@@ -61,12 +61,26 @@ public class ShotManager {
             }
         }
 
+        Iterator<AnimatedSprite> j = enemyShots.iterator();
+        //Using iterator, can remove the objects...unlikely using foreach
+        while(j.hasNext()) {
+            AnimatedSprite shot = j.next();
+            shot.move();
+            if (shot.getY() < 0){
+                j.remove();
+            }
+        }
+
         // Increment by delta time
         timeSinceLastShot += Gdx.graphics.getDeltaTime();
     }
 
     public void draw(SpriteBatch batch) {
         for (AnimatedSprite shot : shots){
+            shot.draw(batch);
+        }
+
+        for (AnimatedSprite shot : enemyShots){
             shot.draw(batch);
         }
     }
