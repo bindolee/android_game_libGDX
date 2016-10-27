@@ -15,10 +15,12 @@ public class Enemy {
     private static final float ENEMY_SPEED = 205;
     private final Texture enemyTexture;
     private AnimatedSprite animatedSprite;
+    private final ShotManager shotManager;
 
-    public Enemy(Texture enemyTexture)
+    public Enemy(Texture enemyTexture, ShotManager shotManager)
     {
         this.enemyTexture = enemyTexture;
+        this.shotManager = shotManager;
         spawn();
     }
 
@@ -35,7 +37,6 @@ public class Enemy {
     {
         Random random = new Random();
         int randomNumber = random.nextInt(shooterGame.SCREEN_WIDTH - animatedSprite.getWidth() + 1);
-
         return randomNumber + animatedSprite.getWidth()/2;
     }
 
@@ -48,8 +49,16 @@ public class Enemy {
     {
         if(shouldChangeDirection()) {
             animatedSprite.changeDirection();
-            animatedSprite.move();
         }
+        if (shouldFire()){
+            animatedSprite.fireEnemyShot(animatedSprite.getX());
+        }
+        animatedSprite.move();
+    }
+
+    private boolean shouldFire() {
+        Random random = new Random();
+        return random.nextInt(51) == 0;// 1 in 50 chance. 5% chance
     }
 
     private boolean shouldChangeDirection()

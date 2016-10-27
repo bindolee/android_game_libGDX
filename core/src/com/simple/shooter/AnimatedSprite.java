@@ -137,4 +137,8 @@ public class AnimatedSprite {
     {
         velocity.x = -velocity.x;
     }
+
+    public void fireEnemyShot(int x)
+    {
+    }
 }

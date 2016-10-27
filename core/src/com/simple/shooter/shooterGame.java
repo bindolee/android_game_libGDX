@@ -47,7 +47,7 @@ public class shooterGame implements ApplicationListener {
 		shotManager = new ShotManager(shotTexture);
 
 		Texture enemyTexture = new Texture(Gdx.files.internal("data/enemy-spritesheet.png"));
-		enemy = new Enemy(enemyTexture);
+		enemy = new Enemy(enemyTexture, shotManager);
 
 		//GameMusic play after set volume and loop
 		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("data/game-music.mp3"));
