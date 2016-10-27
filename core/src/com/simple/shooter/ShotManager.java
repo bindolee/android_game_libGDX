@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
@@ -94,5 +95,28 @@ public class ShotManager {
         newShotAnimated.setPosition(enemyCenterXLocation, ENEMY_SHOT_Y_OFFSET);
         newShotAnimated.setVelocity(new Vector2(0, -SHOT_SPEED));
         enemyShots.add(newShotAnimated);
+    }
+
+    public boolean playerShotTouches(Rectangle boundingBox)
+    {
+        return shotTouches(shots, boundingBox);
+    }
+
+    public boolean enemyShotTouches(Rectangle boundingBox) {
+        return shotTouches(enemyShots, boundingBox);
+    }
+
+    private boolean shotTouches(List<AnimatedSprite> shots,
+                                Rectangle boundingBox) {
+        Iterator<AnimatedSprite> i = shots.iterator();
+        while(i.hasNext()){
+            AnimatedSprite shot = i.next();
+            //if(Intersector.intersectRectangles( shot.getBoundingBox(), boundingBox,0))
+            {
+                i.remove();
+                return true;
+            }
+        }
+        return false;
     }
 }

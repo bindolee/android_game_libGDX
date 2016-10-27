@@ -28,6 +28,7 @@ public class AnimatedSprite {
     //how much time passed since last time we updated the image.
     //this will help us to keep track what frame we should be displaying  at given time
     private float stateTime;
+    private boolean isDead = false;
 
     //passing sprite which will be animated.
     public AnimatedSprite(Sprite sprite)
@@ -142,5 +143,15 @@ public class AnimatedSprite {
     public Rectangle getBoundingBox()
     {
         return new Rectangle(sprite.getX(), sprite.getY(), getWidth(), getHeight());
+    }
+
+    public void setDead(boolean isdead)
+    {
+        this.isDead = isdead;
+    }
+
+    public boolean isDead()
+    {
+        return isDead;
     }
 }

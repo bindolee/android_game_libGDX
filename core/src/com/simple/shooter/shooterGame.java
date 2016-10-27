@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
@@ -23,6 +24,7 @@ public class shooterGame implements ApplicationListener {
 	private Music gameMusic;
 	private Enemy enemy;
 	private CollisionManager collisionManager;
+	private boolean isGameOver = false;
 
 	@Override
 	public void create() {
@@ -73,6 +75,12 @@ public class shooterGame implements ApplicationListener {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		batch.draw(background,0,0);
+
+		if (isGameOver){
+			BitmapFont font = new BitmapFont();
+			font.draw(batch, "PLAYER HIT", 200, 200);
+		}
+
 		spaceshipAnimated.draw(batch); //Sprite know how to draw by themselves
 		enemy.draw(batch);
 		shotManager.draw(batch);
@@ -80,18 +88,26 @@ public class shooterGame implements ApplicationListener {
 
 		handleInput();
 
-		spaceshipAnimated.move();
-		enemy.update();
-		shotManager.update();
+		if (!isGameOver) {
+			spaceshipAnimated.move();
+			enemy.update();
+			shotManager.update();
+			collisionManager.handleCollision();
+		}
 
-		collisionManager.handleCollision();
-
+		if (spaceshipAnimated.isDead()){
+			isGameOver = true;
+		}
 	}
 
 	private void handleInput() {
 		//handle touch input here..
 		// get the x, y coord when touch input event is happened
 		if (Gdx.input.isTouched()){
+			if (isGameOver){
+				spaceshipAnimated.setDead(false);
+				isGameOver = false;
+			}
 			//3 dimen vector to translate/calculate touch position
 			// to get the correct cooredinates for based on camera position.
 			Vector3 touchPosition =

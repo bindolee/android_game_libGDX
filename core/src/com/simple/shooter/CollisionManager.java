@@ -19,6 +19,15 @@ public class CollisionManager {
     public void handleCollision()
     {
         handleEnemyShot();
+        handlePlayerShot();
+    }
+
+    private void handlePlayerShot()
+    {
+        //since player is only 1.. didn't create seperate class unlikely enemy.
+        if (shotManager.enemyShotTouches(spaceshipAnimated.getBoundingBox())){
+            spaceshipAnimated.setDead(true);
+        }
     }
 
     //Colision detects when shot rectangle hits the enemy or player rectangle bounding box
