@@ -3,6 +3,7 @@ package com.simple.shooter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.Random;
@@ -65,5 +66,10 @@ public class Enemy {
     {
         Random random = new Random();
         return random.nextInt(21) == 0;// 1 in 20 chance. 5% chance
+    }
+
+    public Rectangle getBoudingBox()
+    {
+        return animatedSprite.getBoundingBox();
     }
 }

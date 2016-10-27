@@ -15,4 +15,17 @@ public class CollisionManager {
         this.enemy = enemy;
         this.shotManager = shotManager;
     }
+
+    public void handleCollision()
+    {
+        handleEnemyShot();
+    }
+
+    //Colision detects when shot rectangle hits the enemy or player rectangle bounding box
+    private void handleEnemyShot()
+    {
+        if (shotManager.playerShotTouches(enemy.getBoudingBox())){
+            enemy.hit();
+        }
+    }
 }

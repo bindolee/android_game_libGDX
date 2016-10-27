@@ -84,6 +84,8 @@ public class shooterGame implements ApplicationListener {
 		enemy.update();
 		shotManager.update();
 
+		collisionManager.handleCollision();
+
 	}
 
 	private void handleInput() {
